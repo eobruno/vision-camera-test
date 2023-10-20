@@ -10,7 +10,7 @@ import {
 } from "react-native-vision-camera";
 
 
-const Home = () =>{
+const Home = () => {
     const [texto, setTexto] = useState("teste");
 
     const devices = Camera.getAvailableCameraDevices();
@@ -25,7 +25,14 @@ const Home = () =>{
         getPermission();
     }, []);
 
-    return(
+
+    const frameProcessor = useFrameProcessor((frame) => {
+        'worklet'
+        console.log(`Frame: ${frame.width}x${frame.height} (${frame.pixelFormat})`)
+
+    }, [])
+
+    return (
         <View style={{ flex: 1 }}>
             <Text style={{ fontSize: 45, fontWeight: "700", color: "#1919ff" }}>
                 {texto}
@@ -34,7 +41,7 @@ const Home = () =>{
                 style={StyleSheet.absoluteFill}
                 device={device}
                 isActive={true}
-                //frameProcessor={frameProcessor}
+                frameProcessor={frameProcessor}
             />
         </View>
     )
