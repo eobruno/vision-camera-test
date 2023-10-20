@@ -41,7 +41,7 @@ const Home = () => {
                 style={StyleSheet.absoluteFill}
                 device={device}
                 isActive={true}
-                frameProcessor={frameProcessor}
+                //frameProcessor={frameProcessor}
             />
         </View>
     )
